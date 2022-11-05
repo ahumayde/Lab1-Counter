@@ -23,8 +23,8 @@ int main(int argc, char **argv, char **env) {
 
     //set init variables
     top->clk = 1;
-    top->rst = 1;
-    top->en = 0;
+    top->rst = 0;
+    top->en = 1;
 
     // run the simulation over 300 clk cycles
     for (i = 0; i<1000; i++) {
