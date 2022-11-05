@@ -1,8 +1,5 @@
 module counter #(
-    parameter WIDTH = 16
-    /*
-    1111 1111 1111 1111 1111 >> 16 == 1111   
-    */
+    parameter WIDTH = 8
 )(
     input  logic clk,
     input  logic rst,
@@ -12,6 +9,6 @@ module counter #(
 
 always_ff @ (posedge clk)
     if (rst) count <= {WIDTH{1'b0}};
-    else count <= count + ( en ? {{WIDTH-1{1'b0}}, 1'b1} : {WIDTH{1'b1}} );
+    else     count <= count + {{WIDTH-1{1'b0}}, en};
 
 endmodule
