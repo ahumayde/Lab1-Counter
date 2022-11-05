@@ -38,7 +38,7 @@ int main(int argc, char **argv, char **env) {
 
         //Send count value to Vbuddy
         ///*
-        vbdHex(4, (int(top->count) >> 16) & 0xF);
+        vbdHex(4, (int(top->count) >> 12) & 0xF); // Fixed from >> 16  to >> 12 
         vbdHex(3, (int(top->count) >> 8) & 0xF);
         vbdHex(2, (int(top->count) >> 4) & 0xF);
         vbdHex(1, int(top->count) & 0xF);
@@ -49,7 +49,7 @@ int main(int argc, char **argv, char **env) {
         vbdCycle(i+1);
         
         //change input stimuli
-        top->rst = (i<2) | (i==15);
+        //top->rst = (i<2) | (i==15);
         top->en = !vbdFlag();
         if(Verilated::gotFinish()) exit(0);
     }
